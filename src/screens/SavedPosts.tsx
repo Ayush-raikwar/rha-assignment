@@ -4,7 +4,7 @@ import { PostItem } from "../components/PostItem";
 
 export const SavedPosts = () => {
 
-    const reduxPosts = useSelector((state) => state.posts);
+    const {savedPosts} = useSelector((state) => state.posts);
     const renderItems =({item}) => {
         return(
             <PostItem
@@ -24,8 +24,9 @@ export const SavedPosts = () => {
         <View style={styles.container}>
           <Text style={styles.heading}>Saved Posts</Text>  
             <FlatList
-                data={reduxPosts}
+                data={savedPosts}
                 renderItem={renderItems}
+                keyExtractor={(item)=>item.id.toString()}
             />
         </View>
     )

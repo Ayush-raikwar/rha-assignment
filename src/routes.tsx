@@ -9,50 +9,51 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { StatusBar, View } from "react-native"
+import { PostDetailsScreen } from "./screens/PostDetails"
 
 export const Routes = () => {
     const Tab = createBottomTabNavigator()
     const Stack = createStackNavigator()
 
-    const HomeStack = ()=>(
+    const HomeStack = () => (
         <Stack.Navigator screenOptions={{
-            headerShown:false
+            headerShown: false
         }}>
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
         </Stack.Navigator>
     )
-    return(
+    return (
         <>
             <StatusBar barStyle={'dark-content'} />
-            <NavigationContainer>
-                <Tab.Navigator>
+            <NavigationContainer >
+                <Tab.Navigator screenOptions={{animation:'shift'}}>
                     <Tab.Screen
-                    name="Home" component={HomeStack} 
-                    options={{
-                        tabBarIcon: ({ focused }) => <>
-                            {focused &&
-                                <View style={{ width: '100%', height: 3.5, backgroundColor: 'rgba(135, 206, 235,.6)', marginBottom: 'auto', borderRadius: 8 }} />
-                            }
-                            <AntDesign name='home' color={'skyblue'} size={20} />
-                        </>,
-                        tabBarShowLabel: false
-                    }}
+                        name="Home" component={HomeStack}
+                        options={{
+                            tabBarIcon: ({ focused }) => <>
+                                {focused &&
+                                    <View style={{ width: '100%', height: 3.5, backgroundColor: 'rgba(135, 206, 235,.6)', marginBottom: 'auto', borderRadius: 8 }} />
+                                }
+                                <AntDesign name='home' color={'skyblue'} size={20} />
+                            </>,
+                            tabBarShowLabel: false
+                        }}
 
                     />
-                    <Tab.Screen 
-                    name="SavedPosts" 
-                    component={SavedPosts}
-                    options={{
-                        tabBarIcon: ({ focused }) => <>
-                            {focused &&
-                                <View style={{ width: '100%', height: 3.5, backgroundColor: 'rgba(135, 206, 235,.6)', marginBottom: 'auto', borderRadius: 8 }} />
-                            }
-                            <MaterialIcons name='bookmarks' color={'skyblue'} size={20} />
-                        </>,
-                        tabBarShowLabel: false
-                    }}
+                    <Tab.Screen
+                        name="SavedPosts"
+                        component={SavedPosts}
+                        options={{
+                            tabBarIcon: ({ focused }) => <>
+                                {focused &&
+                                    <View style={{ width: '100%', height: 3.5, backgroundColor: 'rgba(135, 206, 235,.6)', marginBottom: 'auto', borderRadius: 8 }} />
+                                }
+                                <MaterialIcons name='bookmarks' color={'skyblue'} size={20} />
+                            </>,
+                            tabBarShowLabel: false
+                        }}
                     />
-                    <Tab.Screen name="Profile" component={ProfileScreen}
+                    <Tab.Screen name="PostDetails" component={PostDetailsScreen}
                         options={{
                             tabBarIcon: ({ focused }) => <>
                                 {focused &&
